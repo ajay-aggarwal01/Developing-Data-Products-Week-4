@@ -1,0 +1,135 @@
+---
+title: "Developing Data Products - Week4 Assignment"
+author: "Ajay Aggarwal"
+date: "June 2, 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Objective
+- To create a Shiny Application :
+
+  The project files are available at [Github repository](https://github.com/ajay-aggarwal01/Developing-Data-Products-Week-4)
+
+### Review criteria for this assignment is as below :
+
+    - Documentation
+    - Widget input
+    - Calculations
+
+
+## Objective
+
+### To create a R Presentation :
+
+   The Presentation is available at [Rpubs](http://rpubs.com/ajay_jalan/501886). Review criteria for this assignment is as below :
+
+    - Presentation
+    - R expression
+    - Hosted on github or Rpubs
+    - No R errors in the presentation.
+
+
+## Data Source
+
+The source of data is : http://download.macrotrends.net
+The process data is available  [here](https://github.com/ajay-aggarwal01/Developing-Data-Products-Week-4)
+
+Note: There are three csv files containing the pricing history of Oracle, Microsoft and salesforce. 
+
+- [Oracle Historical Pricing](http://download.macrotrends.net/assets/php/stock_data_export.php?t=ORCL)
+
+- [Salesforce Historical Pricing](http://download.macrotrends.net/assets/php/stock_data_export.php?t=crm)
+
+- [Microsoft Historical Pricing](http://download.macrotrends.net/assets/php/stock_data_export.php?t=msft)
+
+## Oracle Data Summary
+
+```{r OracleData, echo = FALSE, warning=FALSE, }
+library(shiny)
+library(ggplot2)
+
+
+# Read Data
+setwd("D:/Work/mystuff/Education/DataScience/Developing Data Products")
+msft <- read.csv("MSFT.csv", stringsAsFactors = FALSE)
+orcl <- read.csv("ORCL.csv", stringsAsFactors = FALSE)
+crm <- read.csv("CRM.csv", stringsAsFactors = FALSE)
+
+msft$Year <- strftime(as.Date(msft$date, "%m/%d/%Y"), "%Y")
+# msft$month <- strftime(as.Date(msft$date, "%m/%d/%Y"),"%b")
+msft$month <- strftime(as.Date(msft$date, "%m/%d/%Y"),"%m")
+
+orcl$Year <- strftime(as.Date(orcl$date, "%m/%d/%Y"), "%Y")
+orcl$month <- strftime(as.Date(orcl$date, "%m/%d/%Y"),"%m")
+
+crm$Year <- strftime(as.Date(crm$date, "%m/%d/%Y"), "%Y")
+crm$month <- strftime(as.Date(crm$date, "%m/%d/%Y"),"%m")
+
+
+summary(orcl)
+
+```
+
+
+## Microsoft data summary
+
+```{r msftData, echo = FALSE}
+summary(msft)
+
+```
+
+## Salesforce data summary
+
+
+```{r crmData, echo = FALSE}
+summary(crm)
+
+```
+
+
+## Application
+
+### Left Pane 
+
+- Select data options using radio buttons
+- Select Year Range using Slider Range. 
+- Select Variable from Dataset.  
+
+
+### Main Panel 
+
+- Summary 
+- Structure 
+- Data 
+- Plot
+
+## Summary Tab
+```{r sum, echo=FALSE}
+   knitr::include_graphics('./Summary.png')
+```
+
+## Structure Tab
+
+```{r struct, echo=FALSE}
+   knitr::include_graphics('./Structure.png')
+```
+
+
+## Data Tab
+
+```{r Data, echo=FALSE}
+   knitr::include_graphics('./Data.png')
+```
+
+## Plot Tab
+
+```{r Plot, echo=FALSE}
+   knitr::include_graphics('./Plot.png')
+```
+
+## Thank you for reviewing it. 
+
