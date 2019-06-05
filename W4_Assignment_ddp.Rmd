@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = FALSE)
 - To create a Shiny Application :
 
   The project files are available at [Github repository](https://github.com/ajay-aggarwal01/Developing-Data-Products-Week-4)
+  Application is available in [shinyapp.io](https://ajayaggarwal.shinyapps.io/StockAnalysis/)
 
 ### Review criteria for this assignment is as below :
 
